@@ -1,0 +1,15 @@
+es_host: elasticsearch.example.com
+es_port: 9200
+name: rule-01
+type: spike
+index: panos*
+num_events: 3
+timeframe:
+  hours: 1
+filter:
+{
+}
+alert:
+- command
+pipe_match_json: true
+command: "python coomand.py"

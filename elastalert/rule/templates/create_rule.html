@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block title %}Create a New Rule{% endblock %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'home' %}">Rule lists</a></li>
+  <li class="breadcrumb-item active">New Rule</li>
+{% endblock %}
+
+{% block content %}
+  <form method="post" novalidate>
+    {% csrf_token %}
+    {{ form.errors }}
+    {{ form.non_field_errors }}
+    {% include 'includes/form.html' %}
+    <button type="submit" class="btn btn-success">Create</button>
+  </form>
+{% endblock %}

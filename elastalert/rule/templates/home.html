@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item active">Rules List</li>
+{% endblock %}
+
+{% block content %}
+  <table class="table" border="0">
+    <thead class="thead-inverse">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Time</th>
+        <th>Run Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for rule in rules %}
+        <tr>
+          <td>
+            <a href="{% url 'view_rule' rule.pk %}">{{ rule.id }}</a>
+          </td>
+          <td>
+            <a href="{% url 'home' %}">{{ rule.name }}</a>
+          </td>
+          <td>{{ rule.description }}</td>
+          <td>{{ rule.type }}</td>
+          <td>{{ rule.time }}</td>
+          <td class="align-middle">{{ rule.runstatus }}</td>
+          <td>
+            <a href="{% url 'delete_rule' rule.pk%}">delete</a> | <a href="{% url 'home' %}">run</a> | <a href="{% url 'home' %}">stop</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
